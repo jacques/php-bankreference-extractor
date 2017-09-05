@@ -1,0 +1,35 @@
+{
+    "name": "jacques/php-bankreference-extractor",
+    "type": "library",
+    "description": "Library for parsing bank transaction references",
+    "keywords": [
+    ],
+    "homepage": "https://github.com/jacques/php-bankreference-extractor",
+    "license": "MPL",
+    "authors": [
+        {
+            "name": "Jacques Marneweck",
+            "email": "jmarneweck+fnb-bankstatements@gmmail.com",
+            "homepage": "https://github.com/jacques/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jacques\\BankReference\\": "src/"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+        "codeclimate/php-test-reporter": "^0.4.4",
+        "phpunit/phpunit": "^5.7"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors --debug --configuration=tests/phpunit.xml --coverage-clover build/logs/clover.xml --coverage-text",
+        "phpcs": "vendor/bin/phpcs --standard=PSR1,PSR2 --extensions=php src tests"
+    }
+}
