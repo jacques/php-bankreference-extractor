@@ -1,6 +1,6 @@
 <?php
 /**
- * Bank Reference Extractor
+ * Bank Reference Extractor.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
  * @copyright 2017 Jacques Marneweck.  All rights strictly reserved.
@@ -20,15 +20,15 @@ class Extractor
      */
     public static function extract($reference)
     {
-        /**
+        /*
          * Try and extract the reference ignoring the reference banks like ABSA and
          * mutual banks place in the transaction narrative (i.e. ABSA BANK
          */
         preg_match('/\A(?P<bankame>(ABSA\sBANK|CAPITEC|CASHFOCUS|CITIBANK|INVESTECPB|NEDCOR|OLYMPUSMB|PAYACCSYS|SAGEPAY))?\s?(?P<account_number>532[12]\d{7})?\s?(?P<reference>.*)?\z/ixs', $reference, $matches, PREG_OFFSET_CAPTURE, 0);
 
         return [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => $matches,
         ];
     }
