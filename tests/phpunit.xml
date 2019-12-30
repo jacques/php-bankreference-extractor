@@ -1,8 +1,6 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         colors="never"
-         debug="true"
-         syntaxCheck="true"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
@@ -14,13 +12,9 @@
     <logging>
         <log type="coverage-html" target="../build/coverage"/>
     </logging>
-    <groups>
-       <include>
-       </include>
-    </groups>
-  <filter>
-    <whitelist processUncoveredFilesFromWhitelist="false">
-      <directory suffix=".php">../src/</directory>
-    </whitelist>
-  </filter>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">../src/</directory>
+        </whitelist>
+    </filter>
 </phpunit>

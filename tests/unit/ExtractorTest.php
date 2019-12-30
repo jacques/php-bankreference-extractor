@@ -1,25 +1,26 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Bank Reference Extractor Test
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2016-2017 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2016-2019 Jacques Marneweck.  All rights strictly reserved.
  */
 
 namespace Jacques\BankReference\Extractor\Tests\Unit;
 
 use Jacques\BankReference\Extractor;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for Jacques\BankReference\Extractor
  */
-class ExtractorTest extends \PHPUnit_Framework_TestCase
+class ExtractorTest extends TestCase
 {
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
     }
 
@@ -27,11 +28,11 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
-    public function testExtractReferenceWithBankNameFirst()
+    public function testExtractReferenceWithBankNameFirst(): void
     {
         /**
          * ABSA BANK
@@ -254,7 +255,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($expected, $response);
     }
 
-    public function testExtractReferenceWithNoBankNameWithAccountNumberFirst()
+    public function testExtractReferenceWithNoBankNameWithAccountNumberFirst(): void
     {
         /**
          * ABSA BANK
@@ -301,7 +302,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($expected, $response);
     }
 
-    public function testExtractJustReferences()
+    public function testExtractJustReferences(): void
     {
 
         /**

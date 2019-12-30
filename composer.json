@@ -22,14 +22,22 @@
     "require": {
     },
     "require-dev": {
-        "codeclimate/php-test-reporter": "^0.4.4",
-        "phpunit/phpunit": "^5.7"
+        "phpro/grumphp": "^0.17.1",
+        "phpunit/php-invoker": "^2.0",
+        "phpunit/phpunit": "^8.5",
+        "rector/rector": "^0.6.4",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^3.8"
     },
     "config": {
         "sort-packages": true
     },
     "scripts": {
         "test": "vendor/bin/phpunit --colors --debug --configuration=tests/phpunit.xml --coverage-clover build/logs/clover.xml --coverage-text",
-        "phpcs": "vendor/bin/phpcs --standard=PSR1,PSR2 --extensions=php src tests"
+        "phpcs": "vendor/bin/phpcs --standard=PSR1,PSR2 --extensions=php src tests",
+        "rector": [
+            "vendor/bin/rector --set=php70 process src/",
+            "vendor/bin/rector --set=code-quality process src/"
+        ]
     }
 }
