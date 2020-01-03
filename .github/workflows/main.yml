@@ -1,0 +1,17 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: composer install
+      run: composer install --prefer-dist
+      env:
+        token: ${{secrets.COMPOSER_AUTH}}
+    - name: composer test
+      run: composer test
