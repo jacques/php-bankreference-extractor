@@ -1,6 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
- * Bank Reference Extractor Test
+ * Bank Reference Extractor Test.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
  * @copyright 2016-2020 Jacques Marneweck.  All rights strictly reserved.
@@ -12,7 +14,7 @@ use Jacques\BankReference\Extractor;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests for Jacques\BankReference\Extractor
+ * Tests for Jacques\BankReference\Extractor.
  */
 class ExtractorTest extends TestCase
 {
@@ -35,12 +37,12 @@ class ExtractorTest extends TestCase
     public function testExtractReferenceWithBankNameFirst(): void
     {
         /**
-         * ABSA BANK
+         * ABSA BANK.
          */
         $response = Extractor::extract('ABSA BANK Joe Soap', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'ABSA BANK Joe Soap',
@@ -79,12 +81,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * ABSA BANK
+         * ABSA BANK.
          */
         $response = Extractor::extract('ABSA BANK 53211234567 Joe Soap', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'ABSA BANK 53211234567 Joe Soap',
@@ -123,12 +125,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * CAPITEC BANK
+         * CAPITEC BANK.
          */
         $response = Extractor::extract('CAPITEC 53211234567 Joe Soap', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'CAPITEC 53211234567 Joe Soap',
@@ -167,12 +169,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * CITIBANK
+         * CITIBANK.
          */
         $response = Extractor::extract('CITIBANK  22025522FDMSMCV0601C', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'CITIBANK  22025522FDMSMCV0601C',
@@ -211,12 +213,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * INVESTECPB
+         * INVESTECPB.
          */
         $response = Extractor::extract('INVESTECPBJOESOAP', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'INVESTECPBJOESOAP',
@@ -258,12 +260,12 @@ class ExtractorTest extends TestCase
     public function testExtractReferenceWithNoBankNameWithAccountNumberFirst(): void
     {
         /**
-         * ABSA BANK
+         * ABSA BANK.
          */
         $response = Extractor::extract('53211234567', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => '53211234567',
@@ -303,8 +305,8 @@ class ExtractorTest extends TestCase
 
         $response = Extractor::extract('32120109999', '321[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => '32120109999',
@@ -347,12 +349,12 @@ class ExtractorTest extends TestCase
     {
 
         /**
-         * MOBILE NUMBER
+         * MOBILE NUMBER.
          */
         $response = Extractor::extract('0761234567', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => '0761234567',
@@ -391,12 +393,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * MOBILE NUMBER
+         * MOBILE NUMBER.
          */
         $response = Extractor::extract('27761234567', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => '27761234567',
@@ -435,12 +437,12 @@ class ExtractorTest extends TestCase
         self::assertEquals($expected, $response);
 
         /**
-         * SALARY/WAGES
+         * SALARY/WAGES.
          */
         $response = Extractor::extract('SALARY/WAGES', '532[12]\d{7}');
         $expected = [
-            'status' => 'ok',
-            'type' => 'bank_name_regex',
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
             'matches' => [
                 0   => [
                     0 => 'SALARY/WAGES',
