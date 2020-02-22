@@ -2,6 +2,7 @@
 
 [![Author](http://img.shields.io/badge/author-@jacques-blue.svg?style=flat-square)](https://twitter.com/jacques)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![codecov](https://codecov.io/gh/jacques/php-bankreference-extractor/branch/master/graph/badge.svg)](https://codecov.io/gh/jacques/php-bankreference-extractor)
 
 ## License
 
