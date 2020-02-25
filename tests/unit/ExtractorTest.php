@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * Bank Reference Extractor Test.
  *
@@ -119,6 +120,94 @@ class ExtractorTest extends TestCase
                 4 => [
                     0 => 'Joe Soap',
                     1 => 22,
+                ],
+            ],
+        ];
+        self::assertEquals($expected, $response);
+
+        /**
+         * BIDVEST BANK.
+         */
+        $response = Extractor::extract('BIDVESTCRS*53211234567', '532[12]\d{7}');
+        $expected = [
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
+            'matches' => [
+                0   => [
+                    0 => 'BIDVESTCRS*53211234567',
+                    1 => 0,
+                ],
+                'bankame' => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                1 => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                2 => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                'account_number' => [
+                    0 => '53211234567',
+                    1 => 11,
+                ],
+                3 => [
+                    0 => '53211234567',
+                    1 => 11,
+                ],
+                'reference' => [
+                    0 => '',
+                    1 => 22 ,
+                ],
+                4 => [
+                    0 => '',
+                    1 => 22,
+                ],
+            ],
+        ];
+        self::assertEquals($expected, $response);
+
+        /**
+         * BIDVEST BANK.
+         */
+        $response = Extractor::extract('BIDVESTCRS*53211234567 Joe Soap', '532[12]\d{7}');
+        $expected = [
+            'status'  => 'ok',
+            'type'    => 'bank_name_regex',
+            'matches' => [
+                0   => [
+                    0 => 'BIDVESTCRS*53211234567 Joe Soap',
+                    1 => 0,
+                ],
+                'bankame' => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                1 => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                2 => [
+                    0 => 'BIDVESTCRS*',
+                    1 => 0,
+                ],
+                'account_number' => [
+                    0 => '53211234567',
+                    1 => 11,
+                ],
+                3 => [
+                    0 => '53211234567',
+                    1 => 11,
+                ],
+                'reference' => [
+                    0 => 'Joe Soap',
+                    1 => 23,
+                ],
+                4 => [
+                    0 => 'Joe Soap',
+                    1 => 23,
                 ],
             ],
         ];

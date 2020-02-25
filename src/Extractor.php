@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * Bank Reference Extractor.
  *
@@ -29,6 +30,7 @@ class Extractor
          */
         $bank_prefixes = implode('|', [
             'ABSA\sBANK',
+            'BIDVESTCRS\*',
             'CAPITEC',
             'CASHFOCUS',
             'CITIBANK',
