@@ -28,7 +28,7 @@ class Extractor
          * Try and extract the reference ignoring the reference banks like ABSA and
          * mutual banks place in the transaction narrative (i.e. ABSA BANK).
          */
-        $bank_prefixes = implode('|', [
+        $bank_prefixes = \implode('|', [
             'ABSA\sBANK',
             'BIDVESTCRS\*',
             'CAPITEC',
@@ -43,7 +43,13 @@ class Extractor
             'STANCOM',
         ]);
 
-        preg_match('/\A(?P<bankame>('.$bank_prefixes.'))?\s?(?P<account_number>'.$prefix.')?\s?(?P<reference>.*)?\z/ixs', $reference, $matches, PREG_OFFSET_CAPTURE, 0);
+        \preg_match(
+            '/\A(?P<bankame>('.$bank_prefixes.'))?\s?(?P<account_number>'.$prefix.')?\s?(?P<reference>.*)?\z/ixs',
+            $reference,
+            $matches,
+            PREG_OFFSET_CAPTURE,
+            0
+        );
 
         return [
             'status'  => 'ok',
