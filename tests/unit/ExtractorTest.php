@@ -159,7 +159,7 @@ class ExtractorTest extends TestCase
                 ],
                 'reference' => [
                     0 => '',
-                    1 => 22 ,
+                    1 => 22,
                 ],
                 4 => [
                     0 => '',
