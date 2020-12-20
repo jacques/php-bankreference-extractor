@@ -34,6 +34,7 @@ class Extractor
             'CAPITEC',
             'CASHFOCUS',
             'CITIBANK',
+            'FIRSTRAND',
             'INVESTECPB',
             'NEDCOR',
             'NETCASH',
