@@ -7,12 +7,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        php-version:
+          - "7.3"
+          - "7.4"
+
     steps:
-    - uses: actions/checkout@v1
+    - name: "Checkout"
+      uses: actions/checkout@v1
+    - name: "Install PHP"
+      uses: "shivammathur/setup-php@v2"
+      with:
+         coverage: "none"
+         php-version: "${{ matrix.php-version }}"
     - name: composer install
-      run: composer install --prefer-dist
-      env:
-        token: ${{secrets.COMPOSER_AUTH}}
+      run: composer install --ansi --no-interaction --no-progress --prefer-dist
     - name: composer test
       run: composer test
     - name: codecov
