@@ -20,6 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHP_71,
         SetList::PHP_72,
         SetList::PHP_73,
+        SetList::PHP_74,
     ]);
 
     // get services (needed for register a single rule)
