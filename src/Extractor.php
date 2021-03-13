@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Bank Reference Extractor.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2017-2020 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2017-2021 Jacques Marneweck.  All rights strictly reserved.
  * @license   MIT
  */
 
@@ -17,8 +17,8 @@ class Extractor
     /**
      * Parse the trasaction narrative on the bank transaction.
      *
-     * @param string $reference     Reference from the bank transactions
-     * @param string $account_regex Account Number Regex
+     * @param string $reference Reference from the bank transactions
+     * @param string $prefix    Account Number Regex
      *
      * @return array
      */
@@ -35,6 +35,7 @@ class Extractor
             'CASHFOCUS',
             'CITIBANK',
             'FIRSTRAND',
+            'FNDS',
             'INVESTECPB',
             'NEDCOR',
             'NETCASH',
