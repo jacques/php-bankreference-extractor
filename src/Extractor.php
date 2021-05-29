@@ -17,12 +17,13 @@ class Extractor
     /**
      * Parse the trasaction narrative on the bank transaction.
      *
-     * @param string $reference Reference from the bank transactions
-     * @param string $prefix    Account Number Regex
+     * @param string $reference     Reference from the bank transactions
+     * @param string $prefix        Account Number Regex
+     * @param string $msidnprefixes MSISDN prefixes in local number format
      *
      * @return array
      */
-    public static function extract(string $reference, string $prefix): array
+    public static function extract(string $reference, string $prefix, string $msidnprefixes): array
     {
         /**
          * Try and extract the reference ignoring the reference banks like ABSA and
@@ -46,7 +47,7 @@ class Extractor
         ]);
 
         \preg_match(
-            '/\A(?P<bankame>('.$bank_prefixes.'))?\s?(?P<account_number>'.$prefix.')?\s?(?P<reference>.*)?\z/ixs',
+            '/\A(?P<bankame>('.$bank_prefixes.'))?\s?(?P<account_number>'.$prefix.')?\s?(?P<msisdn>('.$msidnprefixes.'))?\s?(?P<reference>.*)?\z/ixs',
             $reference,
             $matches,
             PREG_OFFSET_CAPTURE,
