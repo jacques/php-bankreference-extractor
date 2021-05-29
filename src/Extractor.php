@@ -22,7 +22,7 @@ class Extractor
      *
      * @return array
      */
-    public static function extract($reference, $prefix): array
+    public static function extract(string $reference, string $prefix): array
     {
         /**
          * Try and extract the reference ignoring the reference banks like ABSA and
