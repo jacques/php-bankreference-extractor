@@ -1,10 +1,9 @@
 {
     "name": "jacques/php-bankreference-extractor",
-    "type": "library",
     "description": "Library for parsing bank transaction references",
-    "keywords": [],
-    "homepage": "https://github.com/jacques/php-bankreference-extractor",
     "license": "MPL",
+    "type": "library",
+    "keywords": [],
     "authors": [
         {
             "name": "Jacques Marneweck",
@@ -13,20 +12,22 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/jacques/php-bankreference-extractor",
+    "require": {
+        "php": "^7.4 || ^8.0 || ^8.1",
+        "ext-pcre": "*",
+        "composer/pcre": "^3.0"
+    },
     "require-dev": {
-        "brick/varexporter": "^0.3.5",
-        "ergebnis/composer-normalize": "^2.13",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "phpro/grumphp": "^0.18",
+        "brick/varexporter": "^0.3.7",
+        "ergebnis/composer-normalize": "^2.28",
+        "friendsofphp/php-cs-fixer": "^3.9",
         "phpunit/php-invoker": "^3.1",
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.11.6",
+        "rector/rector": "^0.13.9",
         "sensiolabs/security-checker": "^6.0",
-        "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^4.7"
-    },
-    "config": {
-        "sort-packages": true
+        "squizlabs/php_codesniffer": "^3.7",
+        "vimeo/psalm": "^4.25"
     },
     "autoload": {
         "psr-4": {
@@ -37,6 +38,12 @@
         "psr-4": {
             "Jacques\\BankReference\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
     },
     "scripts": {
         "phpcs": "vendor/bin/phpcs --standard=PSR1,PSR2 --extensions=php src tests",
