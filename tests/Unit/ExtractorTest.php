@@ -6,10 +6,10 @@ declare(strict_types=1);
  * Bank Reference Extractor Test.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2016-2021 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2016-2022 Jacques Marneweck.  All rights strictly reserved.
  */
 
-namespace Jacques\BankReference\Extractor\Tests\Unit;
+namespace Jacques\BankReference\Tests\Unit;
 
 use Brick\VarExporter\VarExporter;
 use Jacques\BankReference\Extractor;
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Tests for Jacques\BankReference\Extractor.
  */
-class ExtractorTest extends TestCase
+final class ExtractorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -41,7 +41,7 @@ class ExtractorTest extends TestCase
         /**
          * ABSA BANK.
          */
-        $response = Extractor::extract('ABSA BANK Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('ABSA BANK Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status' => 'ok',
             'type' => 'bank_name_regex',
@@ -88,12 +88,12 @@ class ExtractorTest extends TestCase
                 ]
             ]
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * ABSA BANK.
          */
-        $response = Extractor::extract('ABSA BANK 53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('ABSA BANK 53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status' => 'ok',
             'type' => 'bank_name_regex',
@@ -140,12 +140,12 @@ class ExtractorTest extends TestCase
                 ]
             ]
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * BIDVEST BANK.
          */
-        $response = Extractor::extract('BIDVESTCRS*53211234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('BIDVESTCRS*53211234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -192,12 +192,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * BIDVEST BANK.
          */
-        $response = Extractor::extract('BIDVESTCRS*53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('BIDVESTCRS*53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -244,12 +244,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * CAPITEC BANK.
          */
-        $response = Extractor::extract('CAPITEC 53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('CAPITEC 53211234567 Joe Soap', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -296,12 +296,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * CITIBANK.
          */
-        $response = Extractor::extract('CITIBANK  22025522FDMSMCV0601C', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('CITIBANK  22025522FDMSMCV0601C', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -348,12 +348,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * INVESTECPB.
          */
-        $response = Extractor::extract('INVESTECPBJOESOAP', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('INVESTECPBJOESOAP', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -400,7 +400,7 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
     }
 
     public function testExtractReferenceWithNoBankNameWithAccountNumberFirst(): void
@@ -408,7 +408,7 @@ class ExtractorTest extends TestCase
         /**
          * ABSA BANK.
          */
-        $response = Extractor::extract('53211234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('53211234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -455,9 +455,9 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
-        $response = Extractor::extract('32120109999', '321[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('32120109999', '321[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -504,7 +504,7 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
     }
 
     public function testExtractJustReferences(): void
@@ -513,7 +513,7 @@ class ExtractorTest extends TestCase
         /**
          * MOBILE NUMBER.
          */
-        $response = Extractor::extract('0761234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('0761234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -560,12 +560,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * MOBILE NUMBER.
          */
-        $response = Extractor::extract('27761234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('27761234567', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -612,12 +612,12 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
 
         /**
          * SALARY/WAGES.
          */
-        $response = Extractor::extract('SALARY/WAGES', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
+        $response = \Jacques\BankReference\Extractor::extract('SALARY/WAGES', '532[12]\d{7}', '?:(?:0|27)[678][012345689]\d{7}');
         $expected = [
             'status'  => 'ok',
             'type'    => 'bank_name_regex',
@@ -664,6 +664,6 @@ class ExtractorTest extends TestCase
                 ],
             ],
         ];
-        self::assertEquals($expected, $response);
+        self::assertSame($expected, $response);
     }
 }
