@@ -6,13 +6,15 @@ declare(strict_types=1);
  * Bank Reference Extractor.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2017-2021 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2017-2022 Jacques Marneweck.  All rights strictly reserved.
  * @license   MIT
  */
 
 namespace Jacques\BankReference;
 
-class Extractor
+use Composer\Pcre\Preg;
+
+final class Extractor
 {
     /**
      * Parse the trasaction narrative on the bank transaction.
@@ -46,12 +48,10 @@ class Extractor
             'STANCOM',
         ]);
 
-        \preg_match(
+        Preg::matchWithOffsets(
             '/\A(?P<bankame>('.$bank_prefixes.'))?\s?(?P<account_number>'.$prefix.')?\s?(?P<msisdn>('.$msidnprefixes.'))?\s?(?P<reference>.*)?\z/ixs',
             $reference,
             $matches,
-            PREG_OFFSET_CAPTURE,
-            0
         );
 
         return [
