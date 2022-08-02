@@ -23,7 +23,7 @@ final class Extractor
      * @param string $prefix        Account Number Regex
      * @param string $msidnprefixes MSISDN prefixes in local number format
      *
-     * @return array
+     * @return array{status: string, type: string, matches: mixed}
      */
     public static function extract(string $reference, string $prefix, string $msidnprefixes): array
     {
